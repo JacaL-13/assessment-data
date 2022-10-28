@@ -12,10 +12,10 @@ ORDER BY
 		WHEN country_id = 187 THEN 1
 		ELSE 2
 	END,
-	name
+	name;
 
 INSERT INTO cities (name, rating, country_id)
-VALUES ('${name}', ${rating}, ${countryId})
+VALUES ('${name}', ${rating}, ${countryId});
 
 SELECT
 	cit.city_id,
@@ -26,8 +26,18 @@ SELECT
 FROM
 	cities 				cit
 	LEFT JOIN countries cou ON cit.country_id = cou.country_id;
+ORDER BY
+	cit.rating DESC,
+	cit.name;
 
 DELETE FROM
 	cities
 WHERE
 	city_id = ${req.params.id};
+
+INSERT INTO
+	cities (name, rating, country_id)
+VALUES
+	('Salt Lake City', 3, 187),
+	('Seoul', 4, 163),
+	('Kyoto', 4, 86)

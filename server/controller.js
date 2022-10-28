@@ -37,7 +37,10 @@ module.exports = {
                 cou.name as country
             FROM
                 cities 				cit
-                LEFT JOIN countries cou ON cit.country_id = cou.country_id;
+                LEFT JOIN countries cou ON cit.country_id = cou.country_id
+            ORDER BY
+                cit.rating DESC,
+                cit.name;
         `).then((dbRes) => {
             res.status(200).send(dbRes[0])
         }).catch((err) => console.log(err))
@@ -275,6 +278,13 @@ module.exports = {
             ('Yemen'),
             ('Zambia'),
             ('Zimbabwe');
+
+            INSERT INTO
+                cities (name, rating, country_id)
+            VALUES
+                ('Salt Lake City', 3, 187),
+                ('Seoul', 4, 163),
+                ('Kyoto', 4, 86)
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)
