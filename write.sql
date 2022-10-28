@@ -26,3 +26,8 @@ SELECT
 FROM
 	cities 				cit
 	LEFT JOIN countries cou ON cit.country_id = cou.country_id;
+
+DELETE FROM
+	cities
+WHERE
+	city_id = ${req.params.id};
