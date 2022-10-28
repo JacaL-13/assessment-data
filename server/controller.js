@@ -27,6 +27,21 @@ module.exports = {
             res.status(200).send(dbRes[0])
         }).catch((err) => console.log(err))
     },
+    getCities: (req, res) => {
+        sequelize.query(`
+            SELECT
+                cit.city_id,
+                cit.name as city,
+                cit.rating,
+                cou.country_id,
+                cou.name as country
+            FROM
+                cities 				cit
+                LEFT JOIN countries cou ON cit.country_id = cou.country_id;
+        `).then((dbRes) => {
+            res.status(200).send(dbRes[0])
+        }).catch((err) => console.log(err))
+    },
     createCity: (req, res) => {
         const {name, rating, countryId} = req.body
 

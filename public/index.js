@@ -39,6 +39,7 @@ function getCities() {
     axios.get('http://localhost:4004/cities/')
         .then(res => {
             res.data.forEach(elem => {
+                console.log(elem)
                 let countryCard = `<div class="country-card">
                     <h2>${elem.city}, ${elem.country}</h2>
                     <h3>Rating: ${elem.rating}/5</h3>
