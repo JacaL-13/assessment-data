@@ -7,3 +7,12 @@ CREATE TABLE cities (
 
 SELECT *
 FROM countries
+ORDER BY
+	CASE
+		WHEN country_id = 187 THEN 1
+		ELSE 2
+	END,
+	name
+
+INSERT INTO cities (name, rating, country_id)
+VALUES ('${name}', ${rating}, ${countryId})

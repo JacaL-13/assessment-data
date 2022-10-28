@@ -17,6 +17,22 @@ module.exports = {
         sequelize.query(`
             SELECT *
             FROM countries
+            ORDER BY
+                CASE
+                    WHEN country_id = 187 THEN 1
+                    ELSE 2
+                END,
+                name
+        `).then((dbRes) => {
+            res.status(200).send(dbRes[0])
+        }).catch((err) => console.log(err))
+    },
+    createCity: (req, res) => {
+        const {name, rating, countryId} = req.body
+
+        sequelize.query(`
+            INSERT INTO cities (name, rating, country_id)
+            VALUES ('${name}', ${rating}, ${countryId})
         `).then((dbRes) => {
             res.status(200).send(dbRes[0])
         }).catch((err) => console.log(err))
