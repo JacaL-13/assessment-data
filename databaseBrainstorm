@@ -1,0 +1,37 @@
+Pets
+	size
+	age
+	gender
+	kidsOk
+	dogsOk
+	catsOk
+	hair length
+	house trained
+	special needs
+	fixed
+	arrival date
+	adoption status
+	adopter
+Species
+breed
+color
+adopters
+	name
+	phone
+	email
+	address
+	city
+	state
+	zip
+	approval status
+petadopterinterest junction
+	adopter
+	pet
+adoptionstatus
+approvalstatus
+appointment
+	adopter
+	datetime
+petappointment junction
+	pet
+	appointment
